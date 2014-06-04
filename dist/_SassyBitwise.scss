@@ -171,7 +171,7 @@
 // ---
 // @return [number]
 // ---
-@function \|($x, $y) {
+@function bw-or($x, $y) {
   $b: binary-length($x);
   $res: 0;
 
@@ -192,7 +192,7 @@
 // ---
 // @return [number]
 // ---
-@function \^($x, $y) {
+@function bw-xor($x, $y) {
   $b: binary-length($x);
   $res: 0;
 
@@ -211,7 +211,7 @@
 // ---
 // @return [number]
 // ---
-@function \&($x, $y) {
+@function bw-and($x, $y) {
   $b: binary-length($x);
   $res: 0;
 
@@ -229,7 +229,7 @@
 // ---
 // @return [number]
 // ---
-@function \~($x) {
+@function bw-not($x) {
   @return ($x + sign($x)) * -1
 }
 // `<<` bitwise operator
@@ -240,7 +240,7 @@
 // ---
 // @return [number]
 // ---
-@function \<\<($x, $y) {
+@function bw-shift-left($x, $y) {
   @return $x * power(2, $y)
 }
 // `>>` bitwise operator
@@ -251,7 +251,7 @@
 // ---
 // @return [number]
 // ---
-@function \>\>($x, $y) {
+@function bw-shift-right($x, $y) {
   @return floor($x / power(2, $y))
 }
 
@@ -268,7 +268,7 @@
 
   // Handling not first
   @if nth($args, 1) == "~" {
-    @return \~(nth($args, 2));
+    @return bw-not(nth($args, 2));
   }
 
   // Then all others
@@ -277,23 +277,23 @@
   $y: nth($args, 3);
 
   @if $operator == "^" {
-    @return \^($x, $y);
+    @return bw-xor($x, $y);
   }
 
   @else if $operator == "|" {
-    @return \|($x, $y);
+    @return bw-or($x, $y);
   }
 
   @else if $operator == "&" {
-    @return \&($x, $y);
+    @return bw-and($x, $y);
   }
 
   @else if $operator == "<<" {
-    @return \<\<($x, $y);
+    @return bw-shift-left($x, $y);
   }
 
   @else if $operator == ">>" {
-    @return \>\>($x, $y);
+    @return bw-shift-right($x, $y);
   }
 
   @else {
