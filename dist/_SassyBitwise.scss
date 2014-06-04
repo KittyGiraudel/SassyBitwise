@@ -1,4 +1,4 @@
-/*! SassyBitwise - v1.0.0 - 2014-06-04 */
+/*! SassyBitwise - v0.0.1 - 2014-06-04 */
 // Power function
 // Using Compass if defined
 // ---
@@ -130,18 +130,19 @@
   @if length($args) == 2 {
     @if nth($args, 1) != "~" {
       @warn "Only 2 arguments specified but first is not `~`.";
-      @return false
+      @return false;
     }
+
     @if not valid-number(nth($args, 2)) {
       @warn "Only 2 arguments specified but second is not a valid unitless number.";
-      @return false
+      @return false;
     }
   }
 
   @else if length($args) == 3 {
     @if not index($valid-operators, nth($args, 2)) {
       @warn "Invalid operator: `#{$operator}` given, one of #{inspect($valid-operators)} expected.";
-      @return false
+      @return false;
     }
 
     @if not valid-number(nth($args, 1)) {
@@ -157,10 +158,10 @@
 
   @else {
     @warn "Invalid number of arguments: #{length($args)} given, 2 or 3 expected.";
-    @return false
+    @return false;
   }
 
-  @return true
+  @return true;
 }
 // `or` bitwise operator
 // $x | $y
@@ -231,6 +232,29 @@
 @function \~($x) {
   @return ($x + sign($x)) * -1
 }
+// `<<` bitwise operator
+// $x << $y
+// ---
+// @param [number] $x: first value
+// @param [number] $y: second value
+// ---
+// @return [number]
+// ---
+@function \<\<($x, $y) {
+  @return $x * power(2, $y)
+}
+// `>>` bitwise operator
+// $x >> $y
+// ---
+// @param [number] $x: first value
+// @param [number] $y: second value
+// ---
+// @return [number]
+// ---
+@function \>\>($x, $y) {
+  @return floor($x / power(2, $y))
+}
+
 // Bitwise helper function
 // ---
 // @param [list] $args: list of parameters
@@ -252,21 +276,26 @@
   $x: nth($args, 1);
   $y: nth($args, 3);
 
-  @if index("^" "xor", $operator) {
-    @return \^($x, $y)
+  @if $operator == "^" {
+    @return \^($x, $y);
   }
-  @else if index("|" "or", $operator) {
-    @return \|($x, $y)
+
+  @else if $operator == "|" {
+    @return \|($x, $y);
   }
-  @else if index("&" "and", $operator) {
-    @return \&($x, $y)
+
+  @else if $operator == "&" {
+    @return \&($x, $y);
   }
+
   @else if $operator == "<<" {
-    @return \<\<($x, $y)
+    @return \<\<($x, $y);
   }
+
   @else if $operator == ">>" {
     @return \>\>($x, $y);
   }
+
   @else {
     @warn "Wrong operator `#{$operator}` for `bitwise` function.";
     @return false
