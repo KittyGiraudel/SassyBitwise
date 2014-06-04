@@ -10,18 +10,19 @@
   @if length($args) == 2 {
     @if nth($args, 1) != "~" {
       @warn "Only 2 arguments specified but first is not `~`.";
-      @return false
+      @return false;
     }
+
     @if not valid-number(nth($args, 2)) {
       @warn "Only 2 arguments specified but second is not a valid unitless number.";
-      @return false
+      @return false;
     }
   }
 
   @else if length($args) == 3 {
     @if not index($valid-operators, nth($args, 2)) {
       @warn "Invalid operator: `#{$operator}` given, one of #{inspect($valid-operators)} expected.";
-      @return false
+      @return false;
     }
 
     @if not valid-number(nth($args, 1)) {
@@ -37,8 +38,8 @@
 
   @else {
     @warn "Invalid number of arguments: #{length($args)} given, 2 or 3 expected.";
-    @return false
+    @return false;
   }
 
-  @return true
+  @return true;
 }
