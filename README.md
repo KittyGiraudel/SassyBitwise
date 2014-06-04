@@ -1,42 +1,66 @@
 SassyBitwise
 ============
 
-Bitwise operators in Sass.
+[Bitwise operators](http://en.wikipedia.org/wiki/Bitwise_operation) in Sass (not Ruby).
 
 ## And
 
 ```scss
-$value: bitwise(42 '&' 48); // 32
+$value: bw-and(42, 48);
+// or
+$value: bitwise(42 '&' 48);
+
+// -> 32
 ```
 
 ## Or
 
 ```scss
-$value: bitwise(42 '|' 48); // 58
+$value: bw-or(42, 48);
+// or
+$value: bitwise(42 '|' 48);
+
+// -> 58
 ```
 
 ## Xor
 
 ```scss
-$value: bitwise(42 '^' 48); // 26
+$value: bw-xor(42, 48);
+// or
+$value: bitwise(42 '^' 48);
+
+// -> 26
 ```
 
 ## Not
 
 ```scss
-$value: bitwise('~' 42); // -43
+$value: bw-not(42);
+// or
+$value: bitwise('~' 42);
+
+// -> -43
 ```
 
 ## Shift left
 
 ```scss
-$value: bitwise(42 '<<' 2); // 168
+$value: bw-shift-left(42, 48);
+// or
+$value: bitwise(42 '<<' 2);
+
+// -> 168
 ```
 
 ## Shift right
 
 ```scss
-$value: bitwise(42 '>>' 2); // 10
+$value: bw-shift-right(42, 48);
+// or
+$value: bitwise(42 '>>' 2);
+
+// -> 10
 ```
 
 ## Note
