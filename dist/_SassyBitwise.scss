@@ -25,6 +25,21 @@
   @return $ret
 }
 
+// Order arguments decreasing
+// ---
+// @param [number] $x: first value
+// @param [number] $y: second value
+// ---
+// @return [number]
+// ---
+@function order-args($x, $y) {
+  @if $x >= $y {
+    @return $x $y;
+  }
+  @else {
+    @return $y $x;
+  }
+}
 // Returns sign of $x
 // ---
 // @param [number] $x: value

@@ -22,6 +22,7 @@ module.exports = function(grunt) {
         src: [
           // Decoder
           '<%= dir.src %>/SassyBitwise/helpers/_power.scss',
+          '<%= dir.src %>/SassyBitwise/helpers/_order-args.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_sign.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_binary-to-decimal.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_decimal-to-binary.scss',
