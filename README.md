@@ -1,4 +1,4 @@
-SassyBitwise
+SassyBitwise [![Build Status](https://travis-ci.org/HugoGiraudel/SassyBitwise.svg)](https://travis-ci.org/HugoGiraudel/SassyBitwise)
 ============
 
 [Bitwise operators](http://en.wikipedia.org/wiki/Bitwise_operation) in Sass (not Ruby).
