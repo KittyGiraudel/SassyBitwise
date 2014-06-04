@@ -13,7 +13,7 @@
       @return false;
     }
 
-    @if not valid-number(nth($args, 2)) {
+    @if not is-number(nth($args, 2)) {
       @warn "Only 2 arguments specified but second is not a valid unitless number.";
       @return false;
     }
@@ -21,16 +21,16 @@
 
   @else if length($args) == 3 {
     @if not index($valid-operators, nth($args, 2)) {
-      @warn "Invalid operator: `#{$operator}` given, one of #{inspect($valid-operators)} expected.";
+      @warn "Invalid operator: `#{nth($args, 2)}` given, one of #{inspect($valid-operators)} expected.";
       @return false;
     }
 
-    @if not valid-number(nth($args, 1)) {
+    @if not is-number(nth($args, 1)) {
       @warn "Invalid number as first argument: `#{nth($args, 1)} given, valid unitless number expected.";
       @return false;
     }
 
-    @if not valid-number(nth($args, 3)) {
+    @if not is-number(nth($args, 3)) {
       @warn "Invalid number as third argument: `#{nth($args, 3)} given, valid unitless number expected.";
       @return false;
     }
