@@ -1,0 +1,11 @@
+// `>>` bitwise operator
+// $x >> $y
+// ---
+// @param [number] $x: first value
+// @param [number] $y: second value
+// ---
+// @return [number]
+// ---
+@function \>\>($x, $y) {
+  @return floor($x / power(2, $y))
+}

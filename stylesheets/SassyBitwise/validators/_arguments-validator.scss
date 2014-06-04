@@ -1,0 +1,44 @@
+// Checks whether argument list is valid
+// ---
+// @param [list] $args: argument list
+// ---
+// @return [bool]
+// ---
+@function arguments-validator($args) {
+  $valid-operators: "^", "|", "&", "<<", ">>";
+
+  @if length($args) == 2 {
+    @if nth($args, 1) != "~" {
+      @warn "Only 2 arguments specified but first is not `~`.";
+      @return false
+    }
+    @if not valid-number(nth($args, 2)) {
+      @warn "Only 2 arguments specified but second is not a valid unitless number.";
+      @return false
+    }
+  }
+
+  @else if length($args) == 3 {
+    @if not index($valid-operators, nth($args, 2)) {
+      @warn "Invalid operator: `#{$operator}` given, one of #{inspect($valid-operators)} expected.";
+      @return false
+    }
+
+    @if not valid-number(nth($args, 1)) {
+      @warn "Invalid number as first argument: `#{nth($args, 1)} given, valid unitless number expected.";
+      @return false;
+    }
+
+    @if not valid-number(nth($args, 3)) {
+      @warn "Invalid number as third argument: `#{nth($args, 3)} given, valid unitless number expected.";
+      @return false;
+    }
+  }
+
+  @else {
+    @warn "Invalid number of arguments: #{length($args)} given, 2 or 3 expected.";
+    @return false
+  }
+
+  @return true
+}

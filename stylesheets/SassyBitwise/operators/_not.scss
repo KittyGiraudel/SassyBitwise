@@ -1,0 +1,10 @@
+// `not` bitwise operator
+// ~ $x
+// ---
+// @param [number] $x: value
+// ---
+// @return [number]
+// ---
+@function \~($x) {
+  @return ($x + sign($x)) * -1
+}

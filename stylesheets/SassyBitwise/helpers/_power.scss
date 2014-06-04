@@ -1,0 +1,25 @@
+// Power function
+// Using Compass if defined
+// ---
+// @param [number] $x: first value
+// @param [number] $y: second value
+// ---
+// @return [number]
+// ---
+@function power($x, $y) {
+  @if function-exists('pow') == true {
+    @return pow($x, $y)
+  }
+
+  $ret: 1;
+  @if $n >= 0 {
+      @for $i from 1 through $n {
+          $ret: $ret * $x
+      }
+  } @else {
+      @for $i from $n to 0 {
+          $ret: $ret / $x
+      }
+  }
+  @return $ret
+}

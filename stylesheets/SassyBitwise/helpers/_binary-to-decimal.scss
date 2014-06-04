@@ -1,0 +1,27 @@
+// Convert from base 2 to base 10
+// ---
+// @param [number] $value: binary to convert
+// ---
+// @return [number]
+// ---
+@function binary-to-decimal($value) {
+  $value: $value + unquote('');
+  $result: if(str-slice($value, 1, 1) == "0", 0, 1);
+
+  @for $i from 2 through str-length($value) {
+    $c: str-slice($value, $i, $i);
+
+    @if not index("0" "1", $c) {
+      @warn "Not binary.";
+      @return false
+    }
+
+    $result: $result * 2;
+
+    @if $c == "1" {
+      $result: $result + 1
+    }
+  }
+
+  @return $result
+}

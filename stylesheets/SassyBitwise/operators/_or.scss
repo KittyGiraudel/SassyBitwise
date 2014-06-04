@@ -1,0 +1,21 @@
+// `or` bitwise operator
+// $x | $y
+// ---
+// @param [number] $x: first value
+// @param [number] $y: second value
+// ---
+// @return [number]
+// ---
+@function \|($x, $y) {
+  $b: binary-length($x);
+  $res: 0;
+
+  @for $i from 0 through $b {
+    $h: power(2, $i);
+    $tx: floor($x / $h) % 2;
+    $ty: floor($y / $h) % 2;
+    $res: $res + $h * (($tx + $ty + $tx * $ty % 2) % 2)
+  }
+
+  @return $res
+}

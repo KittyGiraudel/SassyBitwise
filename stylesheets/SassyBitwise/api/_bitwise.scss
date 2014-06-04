@@ -1,0 +1,41 @@
+// Bitwise helper function
+// ---
+// @param [list] $args: list of parameters
+// ---
+// @return [number]
+// ---
+@function bitwise($args) {
+  @if not arguments-validator($args) {
+    @return false;
+  }
+
+  // Handling not first
+  @if nth($args, 1) == "~" {
+    @return \~(nth($args, 2));
+  }
+
+  // Then all others
+  $operator: to-lower-case(nth($args, 2));
+  $x: nth($args, 1);
+  $y: nth($args, 3);
+
+  @if index("^" "xor", $operator) {
+    @return \^($x, $y)
+  }
+  @else if index("|" "or", $operator) {
+    @return \|($x, $y)
+  }
+  @else if index("&" "and", $operator) {
+    @return \&($x, $y)
+  }
+  @else if $operator == "<<" {
+    @return \<\<($x, $y)
+  }
+  @else if $operator == ">>" {
+    @return \>\>($x, $y);
+  }
+  @else {
+    @warn "Wrong operator `#{$operator}` for `bitwise` function.";
+    @return false
+  }
+}

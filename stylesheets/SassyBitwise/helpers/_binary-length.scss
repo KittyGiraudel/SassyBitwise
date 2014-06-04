@@ -1,0 +1,9 @@
+// Returns binary length
+// ---
+// @param [number] $value: value
+// ---
+// @return [number]
+// ---
+@function binary-length($value) {
+  @return str-length(decimal-to-binary($value) + unquote(""))
+}
