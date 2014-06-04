@@ -7,6 +7,9 @@
 // @return [number]
 // ---
 @function bw-xor($x, $y) {
+  $args: order-args($x, $y);
+  $x: nth($args, 1);
+  $y: nth($args, 2);
   $b: binary-length($x);
   $res: 0;
 

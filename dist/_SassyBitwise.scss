@@ -180,6 +180,9 @@
 // @return [number]
 // ---
 @function bw-or($x, $y) {
+  $args: order-args($x, $y);
+  $x: nth($args, 1);
+  $y: nth($args, 2);
   $b: binary-length($x);
   $res: 0;
 
@@ -202,6 +205,9 @@
 // @return [number]
 // ---
 @function bw-xor($x, $y) {
+  $args: order-args($x, $y);
+  $x: nth($args, 1);
+  $y: nth($args, 2);
   $b: binary-length($x);
   $res: 0;
 
@@ -222,6 +228,9 @@
 // @return [number]
 // ---
 @function bw-and($x, $y) {
+  $args: order-args($x, $y);
+  $x: nth($args, 1);
+  $y: nth($args, 2);
   $b: binary-length($x);
   $res: 0;
 
