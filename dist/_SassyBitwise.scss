@@ -24,6 +24,7 @@
   }
   @return $ret
 }
+
 // Returns sign of $x
 // ---
 // @param [number] $x: value
@@ -33,6 +34,7 @@
 @function sign($x) {
   @return if($x > 0, 1, if($x < 0, -1, 0))
 }
+
 // Convert from base 2 to base 10
 // ---
 // @param [number] $value: binary to convert
@@ -60,6 +62,7 @@
 
   @return $result
 }
+
 // Convert from base 10 to base 2
 // ---
 // @param [number] $value: decimal to convert
@@ -84,6 +87,7 @@
 
   @return $result
 }
+
 // Returns largest power of 2 lesser than $value
 // ---
 // @param [number] $value: value
@@ -100,6 +104,7 @@
   }
   @return $result
 }
+
 // Returns binary length
 // ---
 // @param [number] $value: value
@@ -109,6 +114,7 @@
 @function binary-length($value) {
   @return str-length(decimal-to-binary($value) + unquote(""))
 }
+
 // Checks whether $value is valid number
 // ---
 // @param [number] $value
@@ -118,6 +124,7 @@
 @function is-number($value) {
   @return type-of($value) == "number" and unitless($value)
 }
+
 // Checks whether argument list is valid
 // ---
 // @param [list] $args: argument list
@@ -163,6 +170,7 @@
 
   @return true;
 }
+
 // `or` bitwise operator
 // $x | $y
 // ---
@@ -184,6 +192,7 @@
 
   @return $res
 }
+
 // `xor` bitwise operator
 // $x ^ $y
 // ---
@@ -203,6 +212,7 @@
 
   @return $res
 }
+
 // `and` bitwise operator
 // $x & $y
 // ---
@@ -222,6 +232,7 @@
 
   @return $res
 }
+
 // `not` bitwise operator
 // ~ $x
 // ---
@@ -232,6 +243,7 @@
 @function bw-not($x) {
   @return ($x + sign($x)) * -1
 }
+
 // `<<` bitwise operator
 // $x << $y
 // ---
@@ -243,6 +255,7 @@
 @function bw-shift-left($x, $y) {
   @return $x * power(2, $y)
 }
+
 // `>>` bitwise operator
 // $x >> $y
 // ---
