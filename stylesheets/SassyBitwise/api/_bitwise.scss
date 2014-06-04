@@ -19,21 +19,26 @@
   $x: nth($args, 1);
   $y: nth($args, 3);
 
-  @if index("^" "xor", $operator) {
-    @return \^($x, $y)
+  @if $operator == "^" {
+    @return \^($x, $y);
   }
-  @else if index("|" "or", $operator) {
-    @return \|($x, $y)
+
+  @else if $operator == "|" {
+    @return \|($x, $y);
   }
-  @else if index("&" "and", $operator) {
-    @return \&($x, $y)
+
+  @else if $operator == "&" {
+    @return \&($x, $y);
   }
+
   @else if $operator == "<<" {
-    @return \<\<($x, $y)
+    @return \<\<($x, $y);
   }
+
   @else if $operator == ">>" {
     @return \>\>($x, $y);
   }
+
   @else {
     @warn "Wrong operator `#{$operator}` for `bitwise` function.";
     @return false
