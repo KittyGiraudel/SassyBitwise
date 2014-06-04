@@ -11,7 +11,7 @@
 
   // Handling not first
   @if nth($args, 1) == "~" {
-    @return \~(nth($args, 2));
+    @return bw-not(nth($args, 2));
   }
 
   // Then all others
@@ -20,23 +20,23 @@
   $y: nth($args, 3);
 
   @if $operator == "^" {
-    @return \^($x, $y);
+    @return bw-xor($x, $y);
   }
 
   @else if $operator == "|" {
-    @return \|($x, $y);
+    @return bw-or($x, $y);
   }
 
   @else if $operator == "&" {
-    @return \&($x, $y);
+    @return bw-and($x, $y);
   }
 
   @else if $operator == "<<" {
-    @return \<\<($x, $y);
+    @return bw-shift-left($x, $y);
   }
 
   @else if $operator == ">>" {
-    @return \>\>($x, $y);
+    @return bw-shift-right($x, $y);
   }
 
   @else {

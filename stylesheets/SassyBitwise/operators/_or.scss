@@ -6,7 +6,7 @@
 // ---
 // @return [number]
 // ---
-@function \|($x, $y) {
+@function bw-or($x, $y) {
   $b: binary-length($x);
   $res: 0;
 

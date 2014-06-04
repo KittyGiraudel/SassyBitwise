@@ -6,6 +6,6 @@
 // ---
 // @return [number]
 // ---
-@function \>\>($x, $y) {
+@function bw-shift-right($x, $y) {
   @return floor($x / power(2, $y))
 }

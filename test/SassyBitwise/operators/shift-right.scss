@@ -1,5 +1,5 @@
 @include describe("The shift-right operator") {
   @include it("should return correct results") {
-    @include should(expect(\>\>(42, 2)), to(be(10)));
+    @include should(expect(bw-shift-right(42, 2)), to(be(10)));
   }
 }

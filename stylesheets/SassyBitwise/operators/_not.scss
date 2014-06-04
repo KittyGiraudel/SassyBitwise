@@ -5,6 +5,6 @@
 // ---
 // @return [number]
 // ---
-@function \~($x) {
+@function bw-not($x) {
   @return ($x + sign($x)) * -1
 }
