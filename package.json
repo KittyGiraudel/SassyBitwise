@@ -1,6 +1,6 @@
 {
   "name": "SassyBitwise",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Bitwise operators in Sass.",
   "scripts": {
     "test": "grunt test"
