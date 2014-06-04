@@ -1,0 +1,7 @@
+@include describe("The largest-power-of-2 function") {
+  @include it("should return largest power of 2 lesser than or equal to given value") {
+    @include should(expect(largest-power-of-2(42)), to(be(32)));
+    @include should(expect(largest-power-of-2(32)), to(be(32)));
+    @include should(expect(largest-power-of-2(31)), to(be(16)));
+  }
+}

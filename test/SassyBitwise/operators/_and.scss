@@ -1,0 +1,5 @@
+@include describe("The and operator") {
+  @include it("should return correct results") {
+    @include should(expect(\&(42, 48)), to(be(32)));
+  }
+}

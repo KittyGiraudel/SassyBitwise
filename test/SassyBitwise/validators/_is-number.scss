@@ -1,0 +1,11 @@
+@include describe("The is-number function") {
+  @include it("should return whether a value is a valid unitless number") {
+    @include should(expect(is-number(42)), to(be(true)));
+    @include should(expect(is-number(42px)), to(be(false)));
+    @include should(expect(is-number(true)), to(be(false)));
+    @include should(expect(is-number("string")), to(be(false)));
+    @include should(expect(is-number(#f00)), to(be(false)));
+    @include should(expect(is-number(0)), to(be(true)));
+    @include should(expect(is-number(1000)), to(be(true)));
+  }
+}

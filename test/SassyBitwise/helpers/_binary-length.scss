@@ -1,0 +1,5 @@
+@include describe("The binary-length function") {
+  @include it("should return the string length of binary representation of given value") {
+    @include should(expect(binary-length(42)), to(be(6)));
+  }
+}

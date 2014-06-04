@@ -1,0 +1,6 @@
+@include describe("The not operator") {
+  @include it("should return correct results") {
+    @include should(expect(\~(42)), to(be(-43)));
+    @include should(expect(\~(-42)), to(be(43)));
+  }
+}

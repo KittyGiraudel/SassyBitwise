@@ -1,0 +1,5 @@
+@include describe("The power function") {
+  @include it("should raise x to y") {
+    @include should(expect(power(42, 2)), to(be(1764)));
+  }
+}

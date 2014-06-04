@@ -1,0 +1,5 @@
+@include describe("The shift-left operator") {
+  @include it("should return correct results") {
+    @include should(expect(\<\<(42, 2)), to(be(168)));
+  }
+}

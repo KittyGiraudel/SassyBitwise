@@ -1,0 +1,5 @@
+@include describe("The decimal-to-binary function") {
+  @include it("should convert a base 10 number to base 2") {
+    @include should(expect(decimal-to-binary(42)), to(be(101010)));
+  }
+}
