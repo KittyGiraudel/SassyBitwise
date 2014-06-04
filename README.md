@@ -46,7 +46,7 @@ $value: bitwise('~' 42);
 ## Shift left
 
 ```scss
-$value: bw-shift-left(42, 48);
+$value: bw-shift-left(42, 2);
 // or
 $value: bitwise(42 '<<' 2);
 
@@ -56,7 +56,7 @@ $value: bitwise(42 '<<' 2);
 ## Shift right
 
 ```scss
-$value: bw-shift-right(42, 48);
+$value: bw-shift-right(42, 2);
 // or
 $value: bitwise(42 '>>' 2);
 
