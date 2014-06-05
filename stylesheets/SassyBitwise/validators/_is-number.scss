@@ -1,9 +1,0 @@
-// Checks whether $value is valid number
-// ---
-// @param [number] $value
-// ---
-// @return [bool]
-// ---
-@function is-number($value) {
-  @return type-of($value) == "number" and unitless($value)
-}
