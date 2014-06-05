@@ -84,7 +84,7 @@ Encoding flags on a single bit.
 ```scss
 // Defining global flags,
 // Bitwise encoded
-$DEEP_MODE: bw(1 '<<' 0);
+$RECURSIVE: bw(1 '<<' 0);
 $SAFE_MODE: bw(1 '<<' 1);
 $MULTI: bw(1 '<<' 2);
 $DEBUG: bw(1 '<<' 3);
@@ -97,26 +97,35 @@ $DEBUG: bw(1 '<<' 3);
 // ---
 // @return [bool]
 // ---
-@function flag($int, $flag) {
+@function has-flag($int, $flag) {
   @return bw($int '&' $flag) == $flag;
 }
 
 // Defining a mixin with many options
 // Accepting a single encoded flag as argument
 // ---
-// @param [number] $int: flag encoded value
+// @param [list] $int: list of flags, low-level prog' style
 // ---
-@mixin test($int) {
+@mixin custom-test($int) {
   $flags: bw($int); // Bitwise parsing flags
-  deep: flag($flags, $DEEP_MODE); // true
-  safe: flag($flags, $SAFE_MODE); // true
-  multi: flag($flags, $MULTI);    // true
-  debug: flag($flags, $DEBUG);    // false
+  deep: has-flag($flags, $RECURSIVE);
+  safe: has-flag($flags, $SAFE_MODE);
+  multi: has-flag($flags, $MULTI);
+  debug: has-flag($flags, $DEBUG);
 }
 
 // Sample test cast
 test {
-  @include test($DEEP_MODE '|' $SAFE_MODE '|' $MULTI);
+  @include test($RECURSIVE '|' $SAFE_MODE '|' $MULTI);
+}
+```
+
+```css
+test {
+  deep: true;
+  safe: true;
+  multi: true;
+  debug: false;
 }
 ```
 
