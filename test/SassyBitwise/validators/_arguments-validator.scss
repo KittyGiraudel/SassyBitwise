@@ -6,7 +6,11 @@
     @include should(expect(arguments-validator(4 '<<' 2)), to(be(true)));
     @include should(expect(arguments-validator(4 '>>' 2)), to(be(true)));
     @include should(expect(arguments-validator('~' 4)), to(be(true)));
+    @include should(expect(arguments-validator(4 '|' 4 '|' 4)), to(be(true)));
+    @include should(expect(arguments-validator(4 '|' 4 '^' '~' 4)), to(be(true)));
+    @include should(expect(arguments-validator(4 '|' 4 '^' 4)), to(be(true)));
 
+    @include should(expect(arguments-validator(4 '|' 4 '~' 4)), to(be(false)));
     @include should(expect(arguments-validator(4 and 2)), to(be(false)));
     @include should(expect(arguments-validator(4 or 2)), to(be(false)));
     @include should(expect(arguments-validator(4 xor 2)), to(be(false)));
@@ -14,5 +18,6 @@
     @include should(expect(arguments-validator('|' 2)), to(be(false)));
     @include should(expect(arguments-validator('^' 2)), to(be(false)));
     @include should(expect(arguments-validator('&' 2)), to(be(false)));
+    @include should(expect(arguments-validator(4 2)), to(be(false)));
   }
 }

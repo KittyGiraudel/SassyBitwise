@@ -8,9 +8,9 @@
   $result: 1;
   @while $result <= $value {
     @if $result * 2 > $value {
-      @return $result
+      @return $result;
     }
-    $result: $result * 2
+    $result: $result * 2;
   }
-  @return $result
+  @return $result;
 }

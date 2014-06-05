@@ -13,15 +13,15 @@
 
     @if not index("0" "1", $c) {
       @warn "Not binary.";
-      @return false
+      @return false;
     }
 
     $result: $result * 2;
 
     @if $c == "1" {
-      $result: $result + 1
+      $result: $result + 1;
     }
   }
 
-  @return $result
+  @return $result;
 }

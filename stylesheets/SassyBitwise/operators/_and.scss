@@ -18,5 +18,5 @@
     $res: $res + $h * (floor($x / $h) % 2) * (floor($y / $h) % 2)
   }
 
-  @return $res
+  @return $res;
 }

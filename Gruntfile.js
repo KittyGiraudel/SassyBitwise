@@ -21,14 +21,13 @@ module.exports = function(grunt) {
       dist: {
         src: [
           // Decoder
-          '<%= dir.src %>/SassyBitwise/helpers/_power.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_order-args.scss',
+          '<%= dir.src %>/SassyBitwise/helpers/_power.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_sign.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_binary-to-decimal.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_decimal-to-binary.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_largest-power-of-2.scss',
           '<%= dir.src %>/SassyBitwise/helpers/_binary-length.scss',
-          '<%= dir.src %>/SassyBitwise/validators/_is-number.scss',
           '<%= dir.src %>/SassyBitwise/validators/_arguments-validator.scss',
           '<%= dir.src %>/SassyBitwise/operators/_or.scss',
           '<%= dir.src %>/SassyBitwise/operators/_xor.scss',

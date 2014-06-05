@@ -9,38 +9,59 @@
     @return false;
   }
 
-  // Handling not first
-  @if nth($args, 1) == "~" {
-    @return bw-not(nth($args, 2));
+  $result: null;
+  $operator: null;
+  $not-operator: false;
+  $operators: (
+    '&'  : 'and',
+    '|'  : 'or',
+    '^'  : 'xor',
+    '<<' : 'shift-left',
+    '>>' : 'shift-right'
+  );
+
+  // Loop through all arguments
+  @each $current in $args {
+
+    // If current argument is an operator
+    // Store it while waiting for next value
+    @if map-has-key($operators, $current) {
+      $operator: $current;
+    }
+
+    // If current argument is `not` bitwise operator
+    // Pass $not boolean to true
+    @else if $current == '~' {
+      $not-operator: true;
+    }
+
+    // If current argument is not an operator
+    @else {
+      // If $not is true
+      // Compute not first
+      @if $not-operator {
+        $current: bw-not($current);
+        $not-operator: false;
+      }
+
+      // Then the operation
+      @if $operator {
+        $result: call('bw-' + map-get($operators, $operator), $result, $current);
+        $operator: null;
+      }
+
+      @else {
+        $result: $current;
+      }
+    }
   }
 
-  // Then all others
-  $operator: to-lower-case(nth($args, 2));
-  $x: nth($args, 1);
-  $y: nth($args, 3);
+  @return $result;
+}
 
-  @if $operator == "^" {
-    @return bw-xor($x, $y);
-  }
 
-  @else if $operator == "|" {
-    @return bw-or($x, $y);
-  }
-
-  @else if $operator == "&" {
-    @return bw-and($x, $y);
-  }
-
-  @else if $operator == "<<" {
-    @return bw-shift-left($x, $y);
-  }
-
-  @else if $operator == ">>" {
-    @return bw-shift-right($x, $y);
-  }
-
-  @else {
-    @warn "Wrong operator `#{$operator}` for `bitwise` function.";
-    @return false
-  }
+// Alias for `bitwise`
+// ---
+@function bw($args) {
+  @return bitwise($args);
 }

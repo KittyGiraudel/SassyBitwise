@@ -7,5 +7,5 @@
 // @return [number]
 // ---
 @function bw-shift-left($x, $y) {
-  @return $x * power(2, $y)
+  @return $x * power(2, $y);
 }

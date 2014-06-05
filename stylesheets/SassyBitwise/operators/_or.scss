@@ -17,8 +17,8 @@
     $h: power(2, $i);
     $tx: floor($x / $h) % 2;
     $ty: floor($y / $h) % 2;
-    $res: $res + $h * (($tx + $ty + $tx * $ty % 2) % 2)
+    $res: $res + $h * (($tx + $ty + $tx * $ty % 2) % 2);
   }
 
-  @return $res
+  @return $res;
 }

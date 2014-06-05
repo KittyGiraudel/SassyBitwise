@@ -1,30 +1,4 @@
-/*! SassyBitwise - v1.0.0 - 2014-06-04 */
-// Power function
-// Using Compass if defined
-// ---
-// @param [number] $x: first value
-// @param [number] $y: second value
-// ---
-// @return [number]
-// ---
-@function power($x, $y) {
-  @if function-exists('pow') == true {
-    @return pow($x, $y)
-  }
-
-  $ret: 1;
-  @if $y >= 0 {
-      @for $i from 1 through $y {
-          $ret: $ret * $x
-      }
-  } @else {
-      @for $i from $y to 0 {
-          $ret: $ret / $x
-      }
-  }
-  @return $ret
-}
-
+/*! SassyBitwise - v1.0.0 - 2014-06-05 */
 // Order arguments decreasing
 // ---
 // @param [number] $x: first value
@@ -40,6 +14,33 @@
     @return $y $x;
   }
 }
+
+// Power function
+// Using Compass if defined
+// ---
+// @param [number] $x: first value
+// @param [number] $y: second value
+// ---
+// @return [number]
+// ---
+@function power($x, $y) {
+  @if function-exists('pow') == true {
+    @return pow($x, $y);
+  }
+
+  $ret: 1;
+  @if $y >= 0 {
+      @for $i from 1 through $y {
+          $ret: $ret * $x;
+      }
+  } @else {
+      @for $i from $y to 0 {
+          $ret: $ret / $x;
+      }
+  }
+  @return $ret;
+}
+
 // Returns sign of $x
 // ---
 // @param [number] $x: value
@@ -47,7 +48,7 @@
 // @return [number]
 // ---
 @function sign($x) {
-  @return if($x > 0, 1, if($x < 0, -1, 0))
+  @return if($x > 0, 1, if($x < 0, -1, 0));
 }
 
 // Convert from base 2 to base 10
@@ -65,17 +66,17 @@
 
     @if not index("0" "1", $c) {
       @warn "Not binary.";
-      @return false
+      @return false;
     }
 
     $result: $result * 2;
 
     @if $c == "1" {
-      $result: $result + 1
+      $result: $result + 1;
     }
   }
 
-  @return $result
+  @return $result;
 }
 
 // Convert from base 10 to base 2
@@ -91,16 +92,16 @@
   @while $largest >= 1 {
     @if $value - $largest >= 0 {
       $value: $value - $largest;
-      $result: $result * 10 + 1
+      $result: $result * 10 + 1;
     }
     @else {
-      $result: $result * 10
+      $result: $result * 10;
     }
 
-    $largest: $largest / 2
+    $largest: $largest / 2;
   }
 
-  @return $result
+  @return $result;
 }
 
 // Returns largest power of 2 lesser than $value
@@ -113,11 +114,11 @@
   $result: 1;
   @while $result <= $value {
     @if $result * 2 > $value {
-      @return $result
+      @return $result;
     }
-    $result: $result * 2
+    $result: $result * 2;
   }
-  @return $result
+  @return $result;
 }
 
 // Returns binary length
@@ -127,17 +128,7 @@
 // @return [number]
 // ---
 @function binary-length($value) {
-  @return str-length(decimal-to-binary($value) + unquote(""))
-}
-
-// Checks whether $value is valid number
-// ---
-// @param [number] $value
-// ---
-// @return [bool]
-// ---
-@function is-number($value) {
-  @return type-of($value) == "number" and unitless($value)
+  @return str-length(decimal-to-binary($value) + unquote(""));
 }
 
 // Checks whether argument list is valid
@@ -147,40 +138,46 @@
 // @return [bool]
 // ---
 @function arguments-validator($args) {
-  $valid-operators: "^", "|", "&", "<<", ">>";
+  $last: null;
+  $operators: (
+    '&'  : 'and',
+    '|'  : 'or',
+    '^'  : 'xor',
+    '<<' : 'shift-left',
+    '>>' : 'shift-right'
+  );
 
-  @if length($args) == 2 {
-    @if nth($args, 1) != "~" {
-      @warn "Only 2 arguments specified but first is not `~`.";
-      @return false;
-    }
-
-    @if not is-number(nth($args, 2)) {
-      @warn "Only 2 arguments specified but second is not a valid unitless number.";
-      @return false;
-    }
-  }
-
-  @else if length($args) == 3 {
-    @if not index($valid-operators, nth($args, 2)) {
-      @warn "Invalid operator: `#{nth($args, 2)}` given, one of #{inspect($valid-operators)} expected.";
-      @return false;
-    }
-
-    @if not is-number(nth($args, 1)) {
-      @warn "Invalid number as first argument: `#{nth($args, 1)} given, valid unitless number expected.";
-      @return false;
-    }
-
-    @if not is-number(nth($args, 3)) {
-      @warn "Invalid number as third argument: `#{nth($args, 3)} given, valid unitless number expected.";
-      @return false;
-    }
-  }
-
-  @else {
-    @warn "Invalid number of arguments: #{length($args)} given, 2 or 3 expected.";
+  @if length($args) < 2 {
     @return false;
+  }
+
+  @each $current in $args {
+    @if map-has-key($operators, $current) {
+      @if not $last {
+        @warn "You can't start with another operator than `~`.";
+        @return false;
+      }
+    }
+
+    @else if $current == '~' {
+      @if type-of($last) == "number" {
+        @warn "Operator `~` can't follow a number.";
+        @return false;
+      }
+    }
+
+    @else if type-of($current) == "number" {
+      @if type-of($last) == "number" {
+        @warn "A number can't follow a number. They must be separated by an operator";
+        @return false;
+      }
+    }
+
+    @else {
+      @return false;
+    }
+
+    $last: $current;
   }
 
   @return true;
@@ -205,10 +202,10 @@
     $h: power(2, $i);
     $tx: floor($x / $h) % 2;
     $ty: floor($y / $h) % 2;
-    $res: $res + $h * (($tx + $ty + $tx * $ty % 2) % 2)
+    $res: $res + $h * (($tx + $ty + $tx * $ty % 2) % 2);
   }
 
-  @return $res
+  @return $res;
 }
 
 // `xor` bitwise operator
@@ -228,10 +225,10 @@
 
   @for $i from 0 through $b {
     $h: power(2, $i);
-    $res: $res + $h * (((floor($x / $h) % 2) + (floor($y / $h) % 2)) % 2)
+    $res: $res + $h * (((floor($x / $h) % 2) + (floor($y / $h) % 2)) % 2);
   }
 
-  @return $res
+  @return $res;
 }
 
 // `and` bitwise operator
@@ -254,7 +251,7 @@
     $res: $res + $h * (floor($x / $h) % 2) * (floor($y / $h) % 2)
   }
 
-  @return $res
+  @return $res;
 }
 
 // `not` bitwise operator
@@ -265,7 +262,7 @@
 // @return [number]
 // ---
 @function bw-not($x) {
-  @return ($x + sign($x)) * -1
+  @return ($x + sign($x)) * -1;
 }
 
 // `<<` bitwise operator
@@ -277,7 +274,7 @@
 // @return [number]
 // ---
 @function bw-shift-left($x, $y) {
-  @return $x * power(2, $y)
+  @return $x * power(2, $y);
 }
 
 // `>>` bitwise operator
@@ -289,7 +286,7 @@
 // @return [number]
 // ---
 @function bw-shift-right($x, $y) {
-  @return floor($x / power(2, $y))
+  @return floor($x / power(2, $y));
 }
 
 // Bitwise helper function
@@ -303,38 +300,59 @@
     @return false;
   }
 
-  // Handling not first
-  @if nth($args, 1) == "~" {
-    @return bw-not(nth($args, 2));
+  $result: null;
+  $operator: null;
+  $not-operator: false;
+  $operators: (
+    '&'  : 'and',
+    '|'  : 'or',
+    '^'  : 'xor',
+    '<<' : 'shift-left',
+    '>>' : 'shift-right'
+  );
+
+  // Loop through all arguments
+  @each $current in $args {
+
+    // If current argument is an operator
+    // Store it while waiting for next value
+    @if map-has-key($operators, $current) {
+      $operator: $current;
+    }
+
+    // If current argument is `not` bitwise operator
+    // Pass $not boolean to true
+    @else if $current == '~' {
+      $not-operator: true;
+    }
+
+    // If current argument is not an operator
+    @else {
+      // If $not is true
+      // Compute not first
+      @if $not-operator {
+        $current: bw-not($current);
+        $not-operator: false;
+      }
+
+      // Then the operation
+      @if $operator {
+        $result: call('bw-' + map-get($operators, $operator), $result, $current);
+        $operator: null;
+      }
+
+      @else {
+        $result: $current;
+      }
+    }
   }
 
-  // Then all others
-  $operator: to-lower-case(nth($args, 2));
-  $x: nth($args, 1);
-  $y: nth($args, 3);
+  @return $result;
+}
 
-  @if $operator == "^" {
-    @return bw-xor($x, $y);
-  }
 
-  @else if $operator == "|" {
-    @return bw-or($x, $y);
-  }
-
-  @else if $operator == "&" {
-    @return bw-and($x, $y);
-  }
-
-  @else if $operator == "<<" {
-    @return bw-shift-left($x, $y);
-  }
-
-  @else if $operator == ">>" {
-    @return bw-shift-right($x, $y);
-  }
-
-  @else {
-    @warn "Wrong operator `#{$operator}` for `bitwise` function.";
-    @return false
-  }
+// Alias for `bitwise`
+// ---
+@function bw($args) {
+  @return bitwise($args);
 }

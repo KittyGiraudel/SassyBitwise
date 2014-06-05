@@ -5,5 +5,5 @@
 // @return [number]
 // ---
 @function binary-length($value) {
-  @return str-length(decimal-to-binary($value) + unquote(""))
+  @return str-length(decimal-to-binary($value) + unquote(""));
 }

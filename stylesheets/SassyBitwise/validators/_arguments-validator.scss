@@ -5,40 +5,46 @@
 // @return [bool]
 // ---
 @function arguments-validator($args) {
-  $valid-operators: "^", "|", "&", "<<", ">>";
+  $last: null;
+  $operators: (
+    '&'  : 'and',
+    '|'  : 'or',
+    '^'  : 'xor',
+    '<<' : 'shift-left',
+    '>>' : 'shift-right'
+  );
 
-  @if length($args) == 2 {
-    @if nth($args, 1) != "~" {
-      @warn "Only 2 arguments specified but first is not `~`.";
-      @return false;
-    }
-
-    @if not is-number(nth($args, 2)) {
-      @warn "Only 2 arguments specified but second is not a valid unitless number.";
-      @return false;
-    }
-  }
-
-  @else if length($args) == 3 {
-    @if not index($valid-operators, nth($args, 2)) {
-      @warn "Invalid operator: `#{nth($args, 2)}` given, one of #{inspect($valid-operators)} expected.";
-      @return false;
-    }
-
-    @if not is-number(nth($args, 1)) {
-      @warn "Invalid number as first argument: `#{nth($args, 1)} given, valid unitless number expected.";
-      @return false;
-    }
-
-    @if not is-number(nth($args, 3)) {
-      @warn "Invalid number as third argument: `#{nth($args, 3)} given, valid unitless number expected.";
-      @return false;
-    }
-  }
-
-  @else {
-    @warn "Invalid number of arguments: #{length($args)} given, 2 or 3 expected.";
+  @if length($args) < 2 {
     @return false;
+  }
+
+  @each $current in $args {
+    @if map-has-key($operators, $current) {
+      @if not $last {
+        @warn "You can't start with another operator than `~`.";
+        @return false;
+      }
+    }
+
+    @else if $current == '~' {
+      @if type-of($last) == "number" {
+        @warn "Operator `~` can't follow a number.";
+        @return false;
+      }
+    }
+
+    @else if type-of($current) == "number" {
+      @if type-of($last) == "number" {
+        @warn "A number can't follow a number. They must be separated by an operator";
+        @return false;
+      }
+    }
+
+    @else {
+      @return false;
+    }
+
+    $last: $current;
   }
 
   @return true;

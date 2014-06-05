@@ -1,0 +1,6 @@
+@include describe("The order-args function") {
+  @include it("should swap args to have the greater first") {
+    @include should(expect(order-args(13, 37)), to(be(37 13)));
+    @include should(expect(order-args(37, 13)), to(be(37 13)));
+  }
+}

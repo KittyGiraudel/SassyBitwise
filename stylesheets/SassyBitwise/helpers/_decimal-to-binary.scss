@@ -11,14 +11,14 @@
   @while $largest >= 1 {
     @if $value - $largest >= 0 {
       $value: $value - $largest;
-      $result: $result * 10 + 1
+      $result: $result * 10 + 1;
     }
     @else {
-      $result: $result * 10
+      $result: $result * 10;
     }
 
-    $largest: $largest / 2
+    $largest: $largest / 2;
   }
 
-  @return $result
+  @return $result;
 }

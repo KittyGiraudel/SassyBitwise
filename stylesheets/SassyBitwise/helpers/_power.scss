@@ -8,18 +8,18 @@
 // ---
 @function power($x, $y) {
   @if function-exists('pow') == true {
-    @return pow($x, $y)
+    @return pow($x, $y);
   }
 
   $ret: 1;
   @if $y >= 0 {
       @for $i from 1 through $y {
-          $ret: $ret * $x
+          $ret: $ret * $x;
       }
   } @else {
       @for $i from $y to 0 {
-          $ret: $ret / $x
+          $ret: $ret / $x;
       }
   }
-  @return $ret
+  @return $ret;
 }
