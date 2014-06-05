@@ -78,7 +78,8 @@ $value: bitwise(1 '|' 3 '|' 3 '|' 7);
 
 ## Example
 
-Encoding flags on a single bite.
+You know, because we *can*.
+Encoding flags on a single bit.
 
 ```scss
 // Defining global flags,
@@ -107,10 +108,10 @@ $DEBUG: bw(1 '<<' 3);
 // ---
 @mixin test($int) {
   $flags: bw($int); // Bitwise parsing flags
-  deep: flag($flags, $DEEP_MODE);
-  safe: flag($flags, $SAFE_MODE);
-  multi: flag($flags, $MULTI);
-  debug: flag($flags, $DEBUG);
+  deep: flag($flags, $DEEP_MODE); // true
+  safe: flag($flags, $SAFE_MODE); // true
+  multi: flag($flags, $MULTI);    // true
+  debug: flag($flags, $DEBUG);    // false
 }
 
 // Sample test cast
