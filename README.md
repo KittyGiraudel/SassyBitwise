@@ -78,8 +78,8 @@ $value: bitwise(1 '|' 3 '|' 3 '|' 7);
 
 ## Example
 
+Encoding flags as a single int.
 You know, because we *can*.
-Encoding flags on a single bit.
 
 ```scss
 // Defining global flags,
