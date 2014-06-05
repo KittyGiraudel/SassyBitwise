@@ -116,7 +116,7 @@ $DEBUG: bw(1 '<<' 3);
 
 // Sample test cast
 test {
-  @include test($RECURSIVE '|' $SAFE_MODE '|' $MULTI);
+  @include custom-test($RECURSIVE '|' $SAFE_MODE '|' $MULTI);
 }
 ```
 
