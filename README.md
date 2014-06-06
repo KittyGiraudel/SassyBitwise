@@ -3,7 +3,17 @@ SassyBitwise [![Build Status](https://travis-ci.org/HugoGiraudel/SassyBitwise.sv
 
 [Bitwise operators](http://en.wikipedia.org/wiki/Bitwise_operation) in Sass (not Ruby).
 
-## And
+## Installation
+
+1. `gem install SassyBitwise` (in terminal)
+2. `require "SassyBitwise"` (in `config.rb`)
+3. `@include "SassyBitwise"` (in `.scss`)
+4. ???
+5. Profit
+
+## API
+
+### And
 
 ```scss
 $value: bw-and(42, 48);
@@ -13,7 +23,7 @@ $value: bitwise(42 '&' 48);
 // -> 32
 ```
 
-## Or
+### Or
 
 ```scss
 $value: bw-or(42, 48);
@@ -23,7 +33,7 @@ $value: bitwise(42 '|' 48);
 // -> 58
 ```
 
-## Xor
+### Xor
 
 ```scss
 $value: bw-xor(42, 48);
@@ -33,7 +43,7 @@ $value: bitwise(42 '^' 48);
 // -> 26
 ```
 
-## Not
+### Not
 
 ```scss
 $value: bw-not(42);
@@ -43,7 +53,7 @@ $value: bitwise('~' 42);
 // -> -43
 ```
 
-## Shift left
+### Shift left
 
 ```scss
 $value: bw-shift-left(42, 2);
@@ -53,7 +63,7 @@ $value: bitwise(42 '<<' 2);
 // -> 168
 ```
 
-## Shift right
+### Shift right
 
 ```scss
 $value: bw-shift-right(42, 2);
@@ -63,7 +73,7 @@ $value: bitwise(42 '>>' 2);
 // -> 10
 ```
 
-## All together
+### All together
 
 ```scss
 $value: bitwise(1 '|' 3 '|' 3 '|' 7);
@@ -131,4 +141,4 @@ test {
 
 ## Thanks
 
-A huge thanks to [Valérian Galliat](https://twitter.com/valeriangalliat) for his help.
+A huge thanks to [Valérian Galliat](https://twitter.com/valeriangalliat) for his help, and [Fabrice Weinberg](https://twitter.com/fweinb) for Travis integration.
