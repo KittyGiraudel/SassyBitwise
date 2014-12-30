@@ -18,19 +18,22 @@
   @each $current in $args {
     @if map-has-key($operators, $current) {
       @if not $last {
-        @error "You can't start with another operator than `~`.";
+        @warn "You can't start with another operator than `~`.";
+        @return false;
       }
     }
 
     @else if $current == '~' {
       @if type-of($last) == "number" {
-        @error "Operator `~` can't follow a number.";
+        @warn "Operator `~` can't follow a number.";
+        @return false;
       }
     }
 
     @else if type-of($current) == "number" {
       @if type-of($last) == "number" {
-        @error "A number can't follow a number. They must be separated by an operator";
+        @warn "A number can't follow a number. They must be separated by an operator";
+        @return false;
       }
     }
 

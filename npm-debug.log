@@ -1,0 +1,43 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink /usr/bin/node
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/home/hugogiraudel/Documents/SassyBitwise',
+6 verbose install   [ 'grunt-contrib-sass',
+6 verbose install     'grunt',
+6 verbose install     'bootcamp',
+6 verbose install     'grunt-contrib-watch',
+6 verbose install     'grunt-contrib-concat' ] ]
+7 info preinstall SassyBitwise@1.1.1
+8 verbose readDependencies using package.json deps
+9 verbose already installed skipping grunt-contrib-sass@~0.7.2 /home/hugogiraudel/Documents/SassyBitwise
+10 verbose already installed skipping grunt@~0.4.2 /home/hugogiraudel/Documents/SassyBitwise
+11 verbose already installed skipping bootcamp@~1.1.4 /home/hugogiraudel/Documents/SassyBitwise
+12 verbose already installed skipping grunt-contrib-watch@~0.5.3 /home/hugogiraudel/Documents/SassyBitwise
+13 verbose already installed skipping grunt-contrib-concat@~0.3.0 /home/hugogiraudel/Documents/SassyBitwise
+14 silly resolved []
+15 info build /home/hugogiraudel/Documents/SassyBitwise
+16 verbose linkStuff [ false, false, false, '/home/hugogiraudel/Documents' ]
+17 info linkStuff SassyBitwise@1.1.1
+18 verbose linkBins SassyBitwise@1.1.1
+19 verbose linkMans SassyBitwise@1.1.1
+20 verbose rebuildBundles SassyBitwise@1.1.1
+21 verbose rebuildBundles [ 'bootcamp',
+21 verbose rebuildBundles   'grunt',
+21 verbose rebuildBundles   'grunt-contrib-concat',
+21 verbose rebuildBundles   'grunt-contrib-sass',
+21 verbose rebuildBundles   'grunt-contrib-watch' ]
+22 info install SassyBitwise@1.1.1
+23 info postinstall SassyBitwise@1.1.1
+24 info prepublish SassyBitwise@1.1.1
+25 error peerinvalid The package grunt-contrib-sass does not satisfy its siblings' peerDependencies requirements!
+25 error peerinvalid Peer bootcamp@1.1.7 wants grunt-contrib-sass@^0.8.0
+26 error System Linux 3.13.0-43-generic
+27 error command "/usr/bin/node" "/usr/bin/npm" "install"
+28 error cwd /home/hugogiraudel/Documents/SassyBitwise
+29 error node -v v0.10.33
+30 error npm -v 1.4.28
+31 error code EPEERINVALID
+32 verbose exit [ 1, true ]
