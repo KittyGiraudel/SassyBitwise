@@ -1,10 +1,11 @@
-// `not` bitwise operator
-// ~ $x
-// ---
-// @param [number] $x: value
-// ---
-// @return [number]
-// ---
+/// `not` bitwise operator
+/// @access public
+/// @param {Number} $x: value
+/// @return {Number}
+/// @require {function} sign
+/// @example scss
+/// $value: bw-not(42);
+/// // -43
 @function bw-not($x) {
   @return ($x + sign($x)) * -1;
 }

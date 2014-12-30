@@ -1,9 +1,30 @@
-// Bitwise helper function
-// ---
-// @param [list] $args: list of parameters
-// ---
-// @return [number]
-// ---
+/// Bitwise helper function
+/// @param {List} $args - list of parameters
+/// @return {Number | false}
+/// @require {function} bw-and
+/// @require {function} bw-not
+/// @require {function} bw-or
+/// @require {function} bw-xor
+/// @require {function} bw-shift-left
+/// @require {function} bw-shift-right
+/// @example scss AND
+/// $value: bitwise(42 '&' 48);
+/// // -> 32
+/// @example scss OR
+/// $value: bitwise(42 '|' 48);
+/// // -> 58
+/// @example scss XOR
+/// $value: bitwise(42 '^' 48);
+/// // -> 26
+/// @example scss NOT
+/// $value: bitwise('~' 42);
+/// // -> -43
+/// @example scss SHIFTLEFT
+/// $value: bitwise(42 '<<' 48);
+/// // -> 168
+/// @example scss SHIFTRIGHT
+/// $value: bitwise(42 '>>' 48);
+/// // -> 10
 @function bitwise($args) {
   @if not arguments-validator($args) {
     @return false;
@@ -13,11 +34,11 @@
   $operator: null;
   $not-operator: false;
   $operators: (
-    '&'  : 'and',
-    '|'  : 'or',
-    '^'  : 'xor',
-    '<<' : 'shift-left',
-    '>>' : 'shift-right'
+    "&"  : "and",
+    "|"  : "or",
+    "^"  : "xor",
+    "<<" : "shift-left",
+    ">>" : "shift-right"
   );
 
   // Loop through all arguments
@@ -31,7 +52,7 @@
 
     // If current argument is `not` bitwise operator
     // Pass $not boolean to true
-    @else if $current == '~' {
+    @else if $current == "~" {
       $not-operator: true;
     }
 
@@ -46,7 +67,7 @@
 
       // Then the operation
       @if $operator {
-        $result: call('bw-' + map-get($operators, $operator), $result, $current);
+        $result: call("bw-" + map-get($operators, $operator), $result, $current);
         $operator: null;
       }
 
@@ -60,8 +81,8 @@
 }
 
 
-// Alias for `bitwise`
-// ---
+/// Alias for `bitwise`
+/// @alias bitwise
 @function bw($args) {
   @return bitwise($args);
 }

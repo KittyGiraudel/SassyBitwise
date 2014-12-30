@@ -1,9 +1,7 @@
-// Returns sign of $x
-// ---
-// @param [number] $x: value
-// ---
-// @return [number]
-// ---
+/// Returns sign of `$x`
+/// @access private
+/// @param {Number} $x - value
+/// @return {Number}
 @function sign($x) {
   @return if($x > 0, 1, if($x < 0, -1, 0));
 }

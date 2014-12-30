@@ -1,11 +1,14 @@
-// `xor` bitwise operator
-// $x ^ $y
-// ---
-// @param [number] $x: first value
-// @param [number] $y: second value
-// ---
-// @return [number]
-// ---
+/// `xor` bitwise operator
+/// @access public
+/// @param {Number} $x - first value
+/// @param {Number} $y - second value
+/// @return {Number}
+/// @require {function} power
+/// @require {function} order-args
+/// @require {function} binary-length
+/// @example scss
+/// $value: bw-xor(42, 48);
+/// // 26
 @function bw-xor($x, $y) {
   $args: order-args($x, $y);
   $x: nth($args, 1);

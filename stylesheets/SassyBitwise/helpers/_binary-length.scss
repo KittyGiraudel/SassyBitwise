@@ -1,9 +1,8 @@
-// Returns binary length
-// ---
-// @param [number] $value: value
-// ---
-// @return [number]
-// ---
+/// Returns binary length
+/// @access private
+/// @param {Number} $value - value
+/// @return {Number}
+/// @require {function} decimal-to-binary
 @function binary-length($value) {
   @return str-length(decimal-to-binary($value) + unquote(""));
 }

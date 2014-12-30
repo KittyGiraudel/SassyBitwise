@@ -1,17 +1,14 @@
-// Checks whether argument list is valid
-// ---
-// @param [list] $args: argument list
-// ---
-// @return [bool]
-// ---
+/// Checks whether argument list is valid
+/// @param {List} $args - argument list
+/// @return {Bool}
 @function arguments-validator($args) {
   $last: null;
   $operators: (
-    '&'  : 'and',
-    '|'  : 'or',
-    '^'  : 'xor',
-    '<<' : 'shift-left',
-    '>>' : 'shift-right'
+    "&"  : "and",
+    "|"  : "or",
+    "^"  : "xor",
+    "<<" : "shift-left",
+    ">>" : "shift-right"
   );
 
   @if length($args) < 2 {
@@ -21,22 +18,19 @@
   @each $current in $args {
     @if map-has-key($operators, $current) {
       @if not $last {
-        @warn "You can't start with another operator than `~`.";
-        @return false;
+        @error "You can't start with another operator than `~`.";
       }
     }
 
     @else if $current == '~' {
       @if type-of($last) == "number" {
-        @warn "Operator `~` can't follow a number.";
-        @return false;
+        @error "Operator `~` can't follow a number.";
       }
     }
 
     @else if type-of($current) == "number" {
       @if type-of($last) == "number" {
-        @warn "A number can't follow a number. They must be separated by an operator";
-        @return false;
+        @error "A number can't follow a number. They must be separated by an operator";
       }
     }
 

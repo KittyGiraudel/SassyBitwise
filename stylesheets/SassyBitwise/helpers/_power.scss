@@ -1,11 +1,8 @@
-// Power function
-// Using Compass if defined
-// ---
-// @param [number] $x: first value
-// @param [number] $y: second value
-// ---
-// @return [number]
-// ---
+/// Power function, using Compass if enabled
+/// @access private
+/// @param {Number} $x - first value
+/// @param {Number} $y - second value
+/// @return {Number}
 @function power($x, $y) {
   @if function-exists('pow') == true {
     @return pow($x, $y);

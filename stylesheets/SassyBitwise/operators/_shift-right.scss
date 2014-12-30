@@ -1,11 +1,12 @@
-// `>>` bitwise operator
-// $x >> $y
-// ---
-// @param [number] $x: first value
-// @param [number] $y: second value
-// ---
-// @return [number]
-// ---
+/// `>>` bitwise operator
+/// @access public
+/// @param {Number} $x - first value
+/// @param {Number} $y - second value
+/// @return {Number}
+/// @require {function} power
+/// @example scss
+/// $value: bw-shift-right(42, 2);
+/// // 10
 @function bw-shift-right($x, $y) {
   @return floor($x / power(2, $y));
 }

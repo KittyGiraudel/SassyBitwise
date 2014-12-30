@@ -1,11 +1,14 @@
-// `and` bitwise operator
-// $x & $y
-// ---
-// @param [number] $x: first value
-// @param [number] $y: second value
-// ---
-// @return [number]
-// ---
+/// `and` bitwise operator
+/// @access public
+/// @param {Number} $x - first value
+/// @param {Number} $y - second value
+/// @return {Number}
+/// @require {function} power
+/// @require {function} order-args
+/// @require {function} binary-length
+/// @example scss
+/// $value: bw-and(42, 48);
+/// // 32
 @function bw-and($x, $y) {
   $args: order-args($x, $y);
   $x: nth($args, 1);

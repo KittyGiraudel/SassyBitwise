@@ -1,16 +1,17 @@
-// Returns largest power of 2 lesser than $value
-// ---
-// @param [number] $value: value
-// ---
-// @return [number]
-// ---
+/// Returns largest power of 2 lesser than `$value`
+/// @access private
+/// @param {Number} $value - value
+/// @return {Number}
 @function largest-power-of-2($value) {
   $result: 1;
+
   @while $result <= $value {
     @if $result * 2 > $value {
       @return $result;
     }
+
     $result: $result * 2;
   }
+
   @return $result;
 }
