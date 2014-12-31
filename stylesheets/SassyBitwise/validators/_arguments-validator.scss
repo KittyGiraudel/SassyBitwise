@@ -1,4 +1,5 @@
 /// Checks whether argument list is valid
+/// @access private
 /// @param {List} $args - argument list
 /// @return {Bool}
 @function arguments-validator($args) {
