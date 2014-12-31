@@ -1,7 +1,7 @@
 SassyBitwise [![Build Status](https://travis-ci.org/HugoGiraudel/SassyBitwise.svg)](https://travis-ci.org/HugoGiraudel/SassyBitwise) [![Gem Version](https://badge.fury.io/rb/SassyBitwise.svg)](http://badge.fury.io/rb/SassyBitwise)
 ============
 
-[Bitwise operators](http://en.wikipedia.org/wiki/Bitwise_operation) in Sass (not Ruby).
+[Bitwise operators](http://en.wikipedia.org/wiki/Bitwise_operation) in Sass (not Ruby). Read [API documentation](http://hugogiraudel.com/SassyBitwise).
 
 ## Installation
 
