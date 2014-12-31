@@ -2,3 +2,6 @@
 *.gem
 node_modules
 tmp
+.sassdoc
+sassdocify
+npm-debug.log
