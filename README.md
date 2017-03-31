@@ -5,11 +5,24 @@ SassyBitwise [![Build Status](https://travis-ci.org/HugoGiraudel/SassyBitwise.sv
 
 ## Installation
 
-1. `gem install SassyBitwise` (in terminal)
-2. `require "SassyBitwise"` (in `config.rb`)
-3. `@include "SassyBitwise"` (in `.scss`)
-4. ???
-5. Profit
+```
+gem install SassyBitwise
+```
+
+```rb
+# config.rb
+require "SassyBitwise"
+```
+
+```scss
+@include "SassyBitwise"
+```
+
+---
+
+```sh
+npm install sassybitwise
+```
 
 ## API
 
