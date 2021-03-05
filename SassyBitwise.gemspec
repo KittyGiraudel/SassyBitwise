@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "SassyBitwise"
   s.description = %q{Bitwise operators in Sass.}
   s.summary = %q{An implementation of bitwise operators in Sass without the use of Ruby.}
-  s.authors = ["Hugo Giraudel"]
-  s.email = ["hugo.giraudel@gmail.com"]
-  s.homepage = "http://github.com/HugoGiraudel/SassyBitwise"
+  s.authors = ["Kitty Giraudel"]
+  s.email = ["kitty.giraudel@gmail.com"]
+  s.homepage = "http://github.com/KittyGiraudel/SassyBitwise"
 
   # README file
   #s.files = ["readme.md"]
