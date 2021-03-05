@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/HugoGiraudel/SassyBitwise"
+    "url": "https://github.com/KittyGiraudel/SassyBitwise"
   },
   "keywords": [
     "sass",
@@ -16,12 +16,12 @@
     "list",
     "lists"
   ],
-  "author": "Hugo Giraudel",
+  "author": "Kitty Giraudel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/HugoGiraudel/SassyBitwise/issues"
+    "url": "https://github.com/KittyGiraudel/SassyBitwise/issues"
   },
-  "homepage": "https://github.com/HugoGiraudel/SassyBitwise",
+  "homepage": "https://github.com/KittyGiraudel/SassyBitwise",
   "devDependencies": {
     "bootcamp": "~1.1.4",
     "grunt": "~0.4.2",
