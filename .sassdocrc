@@ -1,4 +1,4 @@
-basePath: "https://github.com/HugoGiraudel/SassyBitwise/tree/master/stylesheets"
+basePath: "https://github.com/KittyGiraudel/SassyBitwise/tree/master/stylesheets"
 display:
     access: ["public"]
     alias: false
